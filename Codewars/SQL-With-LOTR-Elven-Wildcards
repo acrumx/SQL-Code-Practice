@@ -1,0 +1,4 @@
+select  
+  CONCAT(INITCAP(firstname), ' ', INITCAP(lastname)) as shortlist 
+from Elves
+WHERE firstname like '%tegil%' or lastname like '%astar%';
