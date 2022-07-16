@@ -1,0 +1,6 @@
+select 
+  min(result.score) as min, 
+  PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY result.score) AS median, 
+  max(result.score) as max 
+from student
+join result on result.student_id = student.id;
