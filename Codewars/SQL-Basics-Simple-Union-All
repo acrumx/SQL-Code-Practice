@@ -1,0 +1,6 @@
+select * from (select *, 'US' as location from ussales 
+union all 
+select *, 'EU' as location from eusales)
+as results
+where price > 50
+order by location desc, id asc;
