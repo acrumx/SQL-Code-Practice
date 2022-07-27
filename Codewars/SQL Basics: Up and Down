@@ -1,0 +1,10 @@
+select
+  case 
+    when (mod(sum(number1), 2)=0) then max(number1)
+    when (mod(sum(number1), 2)=1) then min(number1)
+  end as number1,
+  case 
+    when (mod(sum(number2), 2)=0) then max(number2)
+    when (mod(sum(number2), 2)=1) then min(number2)
+  end as number2
+from numbers
