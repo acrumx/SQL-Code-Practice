@@ -1,0 +1,16 @@
+select 
+  t.id as id, 
+  sum(t.heads) as heads, 
+  sum(b.legs) as legs, 
+  sum(t.arms) as arms, 
+  sum(b.tails) as tails,
+  case 
+    when sum(t.heads) > sum(t.arms) or sum(b.tails) > sum(b.legs)  then 'BEAST'
+
+    when sum(t.heads) > sum(t.arms) and sum(b.tails) > sum(b.legs) then 'BEAST'
+    else 'WEIRDO'
+  end as species
+from top_half t
+join bottom_half b on t.id = b.id
+group by t.id
+order by species, t.id;
