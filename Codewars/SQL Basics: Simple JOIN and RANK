@@ -1,0 +1,13 @@
+select
+
+    people.id,
+    people.name,
+    count(sales.id) as sale_count,
+    rank () over (order by count(sales.id) desc) sale_rank
+  
+from people
+join sales
+on people.id = sales.people_id
+group by people.id 
+order by sale_rank asc
+limit 10;
