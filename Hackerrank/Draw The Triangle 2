@@ -1,0 +1,6 @@
+declare @a int = 1 
+while @a <= 20
+begin
+print replicate('* ', @a)
+set @a = @a + 1
+end;
