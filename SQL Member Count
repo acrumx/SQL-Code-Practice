@@ -1,0 +1,4 @@
+SELECT ReportsTo, COUNT(ReportsTo) as Members, ROUND(AVG(Age)) as "Average Age" FROM maintable_ZWYPT
+WHERE ReportsTo IS NOT NULL
+GROUP BY ReportsTo
+ORDER By ReportsTo ASC;
