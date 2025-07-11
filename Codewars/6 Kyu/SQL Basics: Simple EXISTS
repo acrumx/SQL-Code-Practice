@@ -1,0 +1,10 @@
+select *
+from departments
+where exists 
+(select * from sales 
+inner join departments on sales.department_id =  departments.id
+where price > 98.00)
+limit 5;
+
+Level: 6 kyu
+Link to Problem: https://www.codewars.com/kata/58113a64e10b53ec36000293/
