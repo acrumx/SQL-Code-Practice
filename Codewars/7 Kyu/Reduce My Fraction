@@ -1,0 +1,6 @@
+select numerator, denominator, (numerator / GCD(numerator, denominator))  as reduced_numerator, (denominator / GCD(numerator,denominator)) as reduced_denominator 
+from fraction
+order by numerator asc, denominator asc;
+
+-- 7 kyu 
+-- Link to this kata: www.codewars.com/kata/576400f2f716ca816d001614/train/sql
