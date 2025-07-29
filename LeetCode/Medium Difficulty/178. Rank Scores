@@ -1,0 +1,10 @@
+-- Write your PostgreSQL query statement below
+
+select score,
+Dense_Rank () over (order by score desc) as rank 
+from scores
+order by rank asc; 
+
+# Link to the problem: https://leetcode.com/problems/rank-scores/
+# Runtime 200 ms, beats 87.46% of all other submissions
+# Written in PostgreSQL
