@@ -1,0 +1,32 @@
+-- Solved in PostgreSQL
+-- Link to problem: https://leetcode.com/problems/rising-temperature/
+
+
+-- The below query passes the first test, but not the final submission test cases.
+-- 13/15 of the test cases are passed and this fails because it does not actually
+-- check that the <u>revious day</u> (key word 'previous day) is a lower temp.
+-- the query is only checking that the previou record, ordered by the recordDate
+-- column holds a lower temperature. This means if the date is not 1 day before the
+-- current one, we will still receive a record because the logic is not going by 
+-- day to day. We need to compare records that are of consecutive dates (1 day after)
+
+SELECT id from (
+    Select 
+    id,
+    recordDate, temperature,
+    LAG(temperature) OVER (ORDER BY recordDate) AS previous_value
+FROM Weather) as ranked
+where temperature > previous_value;
+
+
+-- A good way to solve this in order to get your desired result is by using 
+-- DATEDIFF(day, recordDate, )
+
+-- This is a work in progress 
+SELECT id from (
+  Select
+  id, 
+  recordDate, 
+  temperature,
+  DATEDIFF(
+)
